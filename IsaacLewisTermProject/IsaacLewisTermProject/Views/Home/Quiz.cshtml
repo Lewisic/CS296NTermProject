@@ -1,0 +1,74 @@
+﻿@model QuizVM
+@{
+    ViewData["Title"] = "Dungeons and Dragons Quiz";
+}
+
+<div>
+    <h1 class="display-4">D&D Quiz</h1>
+    <form method="post" class="container">
+        <p class="row font-weight-bold">1. In most editions of D&D, the barbarian class has a unique ability that lets them inflict extra damage. What is that ability called?</p>
+        <div class="form-check">
+            <label for="fury" class="form-check-label">Fury</label>
+            <input asp-for="UserAnswer1" type="radio" value="fury" class="form-check-input" />
+        </div>
+        <div class="form-check">
+            <label for="intimidation" class="form-check-label">Intimidation</label>
+            <input asp-for="UserAnswer1" type="radio" value="intimidation" class="form-check-input col-1" />
+        </div>
+        <div class="form-check">
+            <label for="rage" class="form-check-label">Rage</label>
+            <input asp-for="UserAnswer1" type="radio" value="rage" class="form-check-input col-1" />
+        </div>
+        <p class="font-weight-bold">Answer: @Model?.RightOrWrong1</p>
+        <br />
+
+        <p class="row font-weight-bold">2. There are two main types of dragons, metallic and …</p>
+        <div class="form-check">
+            <label for="chromatic" class="form-check-label">Chromatic</label>
+            <input asp-for="UserAnswer2" type="radio" value="chromatic" class="form-check-input" />
+        </div>
+        <div class="form-check">
+            <label for="aberrant" class="form-check-label">Aberrant</label>
+            <input asp-for="UserAnswer2" type="radio" value="aberrant" class="form-check-input" />
+        </div>
+        <div class="form-check">
+            <label for="abyssal" class="form-check-label">Abyssal</label>
+            <input asp-for="UserAnswer2" type="radio" value="abyssal" class="form-check-input" />
+        </div>
+
+        <p class="font-weight-bold">Answer: @Model?.RightOrWrong2</p>
+        <br />
+        <p class="row font-weight-bold">3. What is another name for a mind-flayer?</p>
+        <div class="form-check">
+            <label for="illithid" class="form-check-label">Illithid</label>
+            <input asp-for="UserAnswer3" type="radio" value="illithid" class="form-check-input" />
+        </div>
+        <div class="form-check">
+            <label for="kuo-toa" class="form-check-label">Kuo-toa</label>
+            <input asp-for="UserAnswer3" type="radio" value="kuo-toa" class="form-check-input" />
+        </div>
+        <div class="form-check">
+            <label for="malcanthet" class="form-check-label">Malcanthet</label>
+            <input asp-for="UserAnswer3" type="radio" value="malcanthet" class="form-check-input" />
+        </div>
+
+        <p class="font-weight-bold">Answer: @Model?.RightOrWrong3</p>
+        <br />
+        <p class="row font-weight-bold">4. The measure of a character's current health in D&D is called what?</p>
+        <div class="form-check">
+            <label for="vitality" class="form-check-label">Vitality</label>
+            <input asp-for="UserAnswer4" type="radio" value="vitality" class="form-check-input" />
+        </div>
+        <div class="form-check">
+            <label for="ac" class="form-check-label">Armor Class</label>
+            <input asp-for="UserAnswer4" type="radio" value="ac" class="form-check-input" />
+        </div>
+        <div class="form-check">
+            <label for="hp" class="form-check-label">Hit Points</label>
+            <input asp-for="UserAnswer4" type="radio" value="hp" class="form-check-input" />
+        </div>
+            <p class="font-weight-bold">Answer: @Model?.RightOrWrong4</p>
+        <br />
+        <input type="submit" class="form-control btn" />
+    </form>
+</div>
