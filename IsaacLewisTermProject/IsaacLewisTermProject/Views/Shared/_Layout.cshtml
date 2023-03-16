@@ -16,7 +16,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">IsaacLewisTermProject</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Dungeons and Homebrew</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -43,10 +43,16 @@
                             @if (User.IsInRole("Admin"))
                             // Signed-in user who is an admin
                             {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-controller="ManageItems" asp-action="Index">
-                                        Manage Items
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Manage
                                     </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" asp-controller="ManageItems" asp-action="Index">Items</a></li>
+                                        <li><a class="dropdown-item" asp-controller="ManageAdventures" asp-action="Index">Adventures</a></li>
+                                        <li><a class="dropdown-item" asp-controller="ManageSpells" asp-action="Index">Spells</a></li>
+                                        <li><a class="dropdown-item" asp-controller="ManageFeats" asp-action="Index">Feats</a></li>
+                                    </ul>
                                 </li>
                             } 
                         }

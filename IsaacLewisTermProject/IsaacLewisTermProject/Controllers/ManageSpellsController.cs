@@ -7,114 +7,108 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using IsaacLewisTermProject.Data;
 using IsaacLewisTermProject.Models;
-using Microsoft.AspNetCore.Identity;
 using IsaacLewisTermProject.Repos;
+using Microsoft.AspNetCore.Identity;
 
 namespace IsaacLewisTermProject.Controllers
 {
-    public class ManageItemsController : Controller
+    public class ManageSpellsController : Controller
     {
         UserManager<AppUser> userManager;
 
         IHomebrewRepository _context;
 
-        public ManageItemsController(IHomebrewRepository repo, UserManager<AppUser> userMngr)
+        public ManageSpellsController(IHomebrewRepository repo, UserManager<AppUser> userMngr)
         {
             _context = repo;
             userManager = userMngr;
         }
 
-        // GET: ManageItems
+        // GET: ManageSpells
         public async Task<IActionResult> Index()
         {
-              return _context.Items != null ? 
-                          View(await _context.Items.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Items'  is null.");
+              return _context.Spells != null ? 
+                          View(await _context.Spells.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbContext.Spells'  is null.");
         }
 
-        // GET: ManageItems/Details/5
+        // GET: ManageSpells/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Items == null)
+            if (id == null || _context.Spells == null)
             {
                 return NotFound();
             }
 
-            var item = await _context.Items
-                .FirstOrDefaultAsync(m => m.ItemId == id);
-            if (item == null)
+            var spell = await _context.Spells
+                .FirstOrDefaultAsync(m => m.SpellId == id);
+            if (spell == null)
             {
                 return NotFound();
             }
 
-            return View(item);
+            return View(spell);
         }
 
-        // GET: ManageItems/Create
+        // GET: ManageSpells/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: ManageItems/Create
+        // POST: ManageSpells/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ItemId,ItemName,ItemRarity,ItemType,ItemEffect,Attunement,DateAdded")] Item item)
+        public async Task<IActionResult> Create([Bind("SpellId,SpellName,SpellSchool,SpellLevel,CastingTime,Range,Components,Duration,Effects,EffectsAtHigherLevel,SpellLists,DateAdded")] Spell spell)
         {
-            if (userManager != null)
-            {
-                item.User = await userManager.GetUserAsync(User);
-                item.User.Name = item.User.UserName;
-            }
             if (ModelState.IsValid)
             {
-                await _context.StoreItemAsync(item);
-                //await _context.SaveChangesAsync();
+                await _context.StoreSpellAsync(spell);
+
                 return RedirectToAction(nameof(Index));
             }
-            return View(item);
+            return View(spell);
         }
 
-        // GET: ManageItems/Edit/5
+        // GET: ManageSpells/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
-            if (id == null || _context.Items == null)
+            if (id == null || _context.Spells == null)
             {
                 return NotFound();
             }
 
-            var item = await _context.GetItemByIdAsync(id);
-            if (item == null)
+            var spell = await _context.GetSpellByIdAsync(id);
+            if (spell == null)
             {
                 return NotFound();
             }
-            return View(item);
+            return View(spell);
         }
 
-        // POST: ManageItems/Edit/5
+        // POST: ManageSpells/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ItemId,ItemName,ItemRarity,ItemType,ItemEffect,Attunement,DateAdded")] Item item)
+        public async Task<IActionResult> Edit(int id, [Bind("SpellId,SpellName,SpellSchool,SpellLevel,CastingTime,Range,Components,Duration,Effects,EffectsAtHigherLevel,SpellLists,DateAdded")] Spell spell)
         {
-            if (id != item.ItemId)
+            if (id != spell.SpellId)
             {
                 return NotFound();
             }
 
-            //if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 try
                 {
-                    await _context.UpdateItemAsync(item);
-                    //await _context.SaveChangesAsync();
+                    await _context.UpdateSpellAsync(spell);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ItemExists(item.ItemId))
+                    if (!SpellExists(spell.SpellId))
                     {
                         return NotFound();
                     }
@@ -125,48 +119,48 @@ namespace IsaacLewisTermProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(item);
+            return View(spell);
         }
 
-        // GET: ManageItems/Delete/5
+        // GET: ManageSpells/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Items == null)
+            if (id == null || _context.Spells == null)
             {
                 return NotFound();
             }
 
-            var item = await _context.Items.FirstOrDefaultAsync(m => m.ItemId == id);
-            if (item == null)
+            var spell = await _context.Spells
+                .FirstOrDefaultAsync(m => m.SpellId == id);
+            if (spell == null)
             {
                 return NotFound();
             }
 
-            return View(item);
+            return View(spell);
         }
 
-        // POST: ManageItems/Delete/5
+        // POST: ManageSpells/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Items == null)
+            if (_context.Spells == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Items'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Spells'  is null.");
             }
-            var item = await _context.GetItemByIdAsync(id);
-            if (item != null)
+            var spell = await _context.GetSpellByIdAsync(id);
+            if (spell != null)
             {
-                await _context.DeleteItemAsync(item);
+                await _context.DeleteSpellAsync(spell);
             }
             
-            //await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ItemExists(int id)
+        private bool SpellExists(int id)
         {
-          return (_context.Items?.Any(e => e.ItemId == id)).GetValueOrDefault();
+          return (_context.Spells?.Any(e => e.SpellId == id)).GetValueOrDefault();
         }
     }
 }

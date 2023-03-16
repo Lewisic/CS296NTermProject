@@ -1,18 +1,18 @@
-﻿@model List<Item>
+﻿@model List<Adventure>
 @{
-    ViewData["Title"] = "Homebrew Items";
+    ViewData["Title"] = "Homebrew Adventures";
 }
 
-<h1 class="display-4">Filter Items</h1>
-    Enter a item name:
+<h1 class="display-4">Filter Adventures</h1>
+    Enter a adventures name:
 <form method="post" class="container">
     <div class="p-2 col-2">
-        <label for="ItemName" class="control-label">Item Name</label>
-        <input name="ItemName" class="form-control" />
+        <label for="AdventureName" class="control-label">Adventure Name</label>
+        <input name="AdventureName" class="form-control" />
     </div>
     <div class="p-2 col-2 d-grid gap-1 d-md-block">
         <button type="submit" class="form-control btn btn-success">Submit</button>
-        <a asp-action="Item" class="btn btn-secondary">Reset</a>
+        <a asp-action="Adventure" class="btn btn-secondary">Reset</a>
     </div>
 </form>
 
@@ -25,42 +25,33 @@
         <button type="submit" class="form-control btn btn-success">Submit</button>
     </div>
 </form>
-<a href="ItemAdd" class="btn btn-primary">Add an Item</a>
-<h1 class="display-4">Homebrew Items</h1>
+<a href="AdventureAdd" class="btn btn-primary">Add an Adventure</a>
+<h1 class="display-4">Homebrew Adventures</h1>
 
-@foreach (Item item in Model)
+@foreach (Adventure adventure in Model)
 {
     <p>
-        <strong class="m-3">Item Name:</strong>
-        @item.ItemName<br />
-        <strong class="m-3">Item Rarity:</strong>
-        @item.ItemRarity<br />
-        <strong class="m-3">Item Type:</strong>
-        @item.ItemType<br />
-        <strong class="m-3">Attunement:</strong>
-        @if (item.Attunement == true)
-        {
-            @($"Yes")
-        }
-        else
-        {
-            @($"No")
-        }<br />
-        <strong class="m-3">Item Effect:</strong>
-        @item.ItemEffect<br />
+        <strong class="m-3">Adventure Name:</strong>
+        @adventure.AdventureName<br />
+        <strong class="m-3">Adventure Difficulty:</strong>
+        @adventure.AdventureDifficulty<br />
+        <strong class="m-3">Recommended Levels:</strong>
+        @adventure.RecommendedLevels<br />
+        <strong class="m-3">Adventure Description:</strong>
+        @adventure.AdventureDifficulty<br />
         <strong class="m-3">User Name:</strong>
-        @item.User.UserName<br />
+        @adventure.User.UserName<br />
         <strong class="m-3">Date Added:</strong>
-        @Html.DisplayFor(noParam => item.DateAdded)
+        @Html.DisplayFor(noParam => adventure.DateAdded)
         <br />
     </p>
-    <a asp-action="ItemComment" asp-route-itemId="@item.ItemId" class="btn-sm btn-secondary col-3 m-3">Add Comment</a>
+    <a asp-action="AdventureComment" asp-route-adventureId="@adventure.AdventureId" class="btn-sm btn-secondary col-3 m-3">Add Comment</a>
 
-    if (item.Comments.Count != 0)
+    if (adventure.Comments.Count != 0)
     {
                 <h5 class="m-3">Comments</h5>
 
-        foreach (var comment in item.Comments)
+        foreach (var comment in adventure.Comments)
         {
                         <p>
                             <p class="m-3">@comment.CommentText</p>

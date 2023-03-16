@@ -1,0 +1,81 @@
+﻿@model List<Spell>
+@{
+    ViewData["Title"] = "Homebrew Spells";
+}
+
+<h1 class="display-4">Filter Spells</h1>
+    Enter a spell name:
+<form method="post" class="container">
+    <div class="p-2 col-2">
+        <label for="SpellName" class="control-label">Spell Name</label>
+        <input name="SpellName" class="form-control" />
+    </div>
+    <div class="p-2 col-2 d-grid gap-1 d-md-block">
+        <button type="submit" class="form-control btn btn-success">Submit</button>
+        <a asp-action="Spell" class="btn btn-secondary">Reset</a>
+    </div>
+</form>
+
+<form method="post" class="container">
+    <div class="p-2 col-2">
+        <label for="UserName" class="control-label">User Name</label>
+        <input name="UserName" class="form-control" />
+    </div>
+    <div class="p-2 col-2">
+        <button type="submit" class="form-control btn btn-success">Submit</button>
+    </div>
+</form>
+<a href="SpellAdd" class="btn btn-primary">Add a Spell</a>
+<h1 class="display-4">Homebrew Spells</h1>
+
+@foreach (Spell spell in Model)
+{
+    <p>
+        <strong class="m-3">Spell Name:</strong>
+        @spell.SpellName<br />
+        <strong class="m-3">Spell School:</strong>
+        @spell.SpellSchool<br />
+        <strong class="m-3">Spell Level:</strong>
+        @spell.SpellLevel<br />
+        <strong class="m-3">Casting Time:</strong>
+        @spell.CastingTime<br />
+        <strong class="m-3">Range:</strong>
+        @spell.Range<br />
+        <strong class="m-3">Components:</strong>
+        @spell.Components<br />
+        <strong class="m-3">Duration:</strong>
+        @spell.Duration<br />
+        <strong class="m-3">Effects:</strong>
+        @spell.Effects<br />
+        <strong class="m-3">Effects at Higher Level:</strong>
+        @spell.EffectsAtHigherLevel<br />
+        <strong class="m-3">Spell Lists:</strong>
+        @spell.SpellLists<br />
+        <strong class="m-3">User Name:</strong>
+        @spell.User.UserName<br />
+        <strong class="m-3">Date Added:</strong>
+        @Html.DisplayFor(noParam => spell.DateAdded)
+        <br />
+    </p>
+    <a asp-action="SpellComment" asp-route-spellId="@spell.SpellId" class="btn-sm btn-secondary col-3 m-3">Add Comment</a>
+
+    if (spell.Comments.Count != 0)
+    {
+                <h5 class="m-3">Comments</h5>
+
+        foreach (var comment in spell.Comments)
+        {
+                        <p>
+                            <p class="m-3">@comment.CommentText</p>
+                            <strong class="m-3">By:</strong>
+                @comment.Commenter.Name
+                            <br />
+                            <strong class="m-3">Date:</strong>
+                @Html.DisplayFor(noParam => comment.CommentDate)
+                            <br />
+                        </p>
+        }
+    }
+        <br />
+        <hr />
+}

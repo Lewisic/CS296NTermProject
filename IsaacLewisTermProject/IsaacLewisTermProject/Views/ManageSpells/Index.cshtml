@@ -1,0 +1,95 @@
+﻿@model IEnumerable<IsaacLewisTermProject.Models.Spell>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SpellName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpellSchool)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpellLevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CastingTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Range)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Components)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Effects)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EffectsAtHigherLevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpellLists)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateAdded)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpellName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpellSchool)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpellLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CastingTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Range)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Components)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Effects)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EffectsAtHigherLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpellLists)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateAdded)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SpellId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SpellId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SpellId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

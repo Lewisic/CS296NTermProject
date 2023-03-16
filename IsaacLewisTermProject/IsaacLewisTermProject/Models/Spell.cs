@@ -2,6 +2,7 @@
 {
     public class Spell : Homebrew
     {
+        private List<SpellComment> comments = new();
         public int SpellId { get; set; }
         public string SpellName { get; set; }
         public string SpellSchool { get; set; }
@@ -14,5 +15,7 @@
         public string EffectsAtHigherLevel { get; set; }
         public string SpellLists { get; set; }
         public DateTime DateAdded { get; set; }
+
+        public ICollection<SpellComment> Comments => comments;
     }
 }

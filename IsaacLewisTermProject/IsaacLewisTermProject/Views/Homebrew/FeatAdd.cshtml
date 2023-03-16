@@ -1,0 +1,12 @@
+﻿@model Feat
+
+<h1 class="display-4 d-flex justify-content-center mx-auto">Add a Feat</h1>
+<div class="container d-flex justify-content-center">
+    <form method="post">
+
+        <div class="justify-content-center"><input asp-for="FeatName" placeholder="Feat Name" class="py-1" style="width: 300px"/><br /></div>
+        <textarea asp-for="FeatEffect" placeholder="Adventure Effect" class="py-1" style="width: 300px"></textarea><br />
+
+        <button type="submit" class="btn-primary">Submit</button>
+    </form>
+</div>

@@ -1,0 +1,19 @@
+﻿@model Spell
+
+<h1 class="display-4 d-flex justify-content-center mx-auto">Add a Spell</h1>
+<div class="container d-flex justify-content-center">
+    <form method="post">
+
+        <div class="justify-content-center"><input asp-for="SpellName" placeholder="Spell Name" class="py-1" style="width: 300px"/><br /></div>
+        <input asp-for="SpellSchool" placeholder="Spell School" class="py-1" style="width: 300px" /><br />
+        <input asp-for="SpellLevel" placeholder="Spell Level" class="py-1" style="width: 300px" /><br />
+        <input asp-for="CastingTime" placeholder="Casting Time" class="py-1" style="width: 300px" /><br />
+        <input asp-for="Range" placeholder="Range" class="py-1" style="width: 300px" /><br />
+        <input asp-for="Components" placeholder="Components" class="py-1" style="width: 300px" /><br />
+        <input asp-for="Duration" placeholder="Duration" class="py-1" style="width: 300px" /><br />
+        <textarea asp-for="Effects" placeholder="Effects" class="py-1" style="width: 300px"></textarea><br />
+        <textarea asp-for="EffectsAtHigherLevel" placeholder="Effects at Higher Level" class="py-1" style="width: 300px"></textarea><br />
+        <input asp-for="SpellLists" placeholder="Spell Lists" class="py-1" style="width: 300px" /><br />
+        <button type="submit" class="btn-primary">Submit</button>
+    </form>
+</div>

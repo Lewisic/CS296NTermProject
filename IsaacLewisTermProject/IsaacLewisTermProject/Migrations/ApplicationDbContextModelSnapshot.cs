@@ -59,15 +59,15 @@ namespace IsaacLewisTermProject.Migrations
                     b.ToTable("Adventures");
                 });
 
-            modelBuilder.Entity("IsaacLewisTermProject.Models.Comment", b =>
+            modelBuilder.Entity("IsaacLewisTermProject.Models.AdventureComment", b =>
                 {
-                    b.Property<int>("CommentId")
+                    b.Property<int>("AdventureCommentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CommentId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdventureCommentId"), 1L, 1);
 
-                    b.Property<int?>("AdventureId")
+                    b.Property<int>("AdventureId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CommentDate")
@@ -81,28 +81,13 @@ namespace IsaacLewisTermProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("FeatId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ItemId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SpellId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CommentId");
+                    b.HasKey("AdventureCommentId");
 
                     b.HasIndex("AdventureId");
 
                     b.HasIndex("CommenterId");
 
-                    b.HasIndex("FeatId");
-
-                    b.HasIndex("ItemId");
-
-                    b.HasIndex("SpellId");
-
-                    b.ToTable("Comments");
+                    b.ToTable("AComments");
                 });
 
             modelBuilder.Entity("IsaacLewisTermProject.Models.Feat", b =>
@@ -132,6 +117,37 @@ namespace IsaacLewisTermProject.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Feats");
+                });
+
+            modelBuilder.Entity("IsaacLewisTermProject.Models.FeatComment", b =>
+                {
+                    b.Property<int>("FeatCommentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FeatCommentId"), 1L, 1);
+
+                    b.Property<DateTime>("CommentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CommentText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CommenterId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("FeatId")
+                        .HasColumnType("int");
+
+                    b.HasKey("FeatCommentId");
+
+                    b.HasIndex("CommenterId");
+
+                    b.HasIndex("FeatId");
+
+                    b.ToTable("FComments");
                 });
 
             modelBuilder.Entity("IsaacLewisTermProject.Models.Item", b =>
@@ -172,6 +188,37 @@ namespace IsaacLewisTermProject.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Items");
+                });
+
+            modelBuilder.Entity("IsaacLewisTermProject.Models.ItemComment", b =>
+                {
+                    b.Property<int>("ItemCommentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ItemCommentId"), 1L, 1);
+
+                    b.Property<DateTime>("CommentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CommentText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CommenterId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ItemId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ItemCommentId");
+
+                    b.HasIndex("CommenterId");
+
+                    b.HasIndex("ItemId");
+
+                    b.ToTable("IComments");
                 });
 
             modelBuilder.Entity("IsaacLewisTermProject.Models.Spell", b =>
@@ -233,6 +280,37 @@ namespace IsaacLewisTermProject.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Spells");
+                });
+
+            modelBuilder.Entity("IsaacLewisTermProject.Models.SpellComment", b =>
+                {
+                    b.Property<int>("SpellCommentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SpellCommentId"), 1L, 1);
+
+                    b.Property<DateTime>("CommentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CommentText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CommenterId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("SpellId")
+                        .HasColumnType("int");
+
+                    b.HasKey("SpellCommentId");
+
+                    b.HasIndex("CommenterId");
+
+                    b.HasIndex("SpellId");
+
+                    b.ToTable("SComments");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -462,29 +540,19 @@ namespace IsaacLewisTermProject.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("IsaacLewisTermProject.Models.Comment", b =>
+            modelBuilder.Entity("IsaacLewisTermProject.Models.AdventureComment", b =>
                 {
                     b.HasOne("IsaacLewisTermProject.Models.Adventure", null)
                         .WithMany("Comments")
-                        .HasForeignKey("AdventureId");
+                        .HasForeignKey("AdventureId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("IsaacLewisTermProject.Models.AppUser", "Commenter")
                         .WithMany()
                         .HasForeignKey("CommenterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("IsaacLewisTermProject.Models.Feat", null)
-                        .WithMany("Comments")
-                        .HasForeignKey("FeatId");
-
-                    b.HasOne("IsaacLewisTermProject.Models.Item", null)
-                        .WithMany("Comments")
-                        .HasForeignKey("ItemId");
-
-                    b.HasOne("IsaacLewisTermProject.Models.Spell", null)
-                        .WithMany("Comments")
-                        .HasForeignKey("SpellId");
 
                     b.Navigation("Commenter");
                 });
@@ -498,6 +566,23 @@ namespace IsaacLewisTermProject.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("IsaacLewisTermProject.Models.FeatComment", b =>
+                {
+                    b.HasOne("IsaacLewisTermProject.Models.AppUser", "Commenter")
+                        .WithMany()
+                        .HasForeignKey("CommenterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("IsaacLewisTermProject.Models.Feat", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("FeatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Commenter");
+                });
+
             modelBuilder.Entity("IsaacLewisTermProject.Models.Item", b =>
                 {
                     b.HasOne("IsaacLewisTermProject.Models.AppUser", "User")
@@ -507,6 +592,23 @@ namespace IsaacLewisTermProject.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("IsaacLewisTermProject.Models.ItemComment", b =>
+                {
+                    b.HasOne("IsaacLewisTermProject.Models.AppUser", "Commenter")
+                        .WithMany()
+                        .HasForeignKey("CommenterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("IsaacLewisTermProject.Models.Item", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Commenter");
+                });
+
             modelBuilder.Entity("IsaacLewisTermProject.Models.Spell", b =>
                 {
                     b.HasOne("IsaacLewisTermProject.Models.AppUser", "User")
@@ -514,6 +616,23 @@ namespace IsaacLewisTermProject.Migrations
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("IsaacLewisTermProject.Models.SpellComment", b =>
+                {
+                    b.HasOne("IsaacLewisTermProject.Models.AppUser", "Commenter")
+                        .WithMany()
+                        .HasForeignKey("CommenterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("IsaacLewisTermProject.Models.Spell", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("SpellId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Commenter");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

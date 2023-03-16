@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace IsaacLewisTermProject.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -255,49 +255,126 @@ namespace IsaacLewisTermProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Comments",
+                name: "AComments",
                 columns: table => new
                 {
-                    CommentId = table.Column<int>(type: "int", nullable: false)
+                    AdventureCommentId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CommentText = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CommentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CommenterId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    AdventureId = table.Column<int>(type: "int", nullable: true),
-                    FeatId = table.Column<int>(type: "int", nullable: true),
-                    ItemId = table.Column<int>(type: "int", nullable: true),
-                    SpellId = table.Column<int>(type: "int", nullable: true)
+                    AdventureId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Comments", x => x.CommentId);
+                    table.PrimaryKey("PK_AComments", x => x.AdventureCommentId);
                     table.ForeignKey(
-                        name: "FK_Comments_Adventures_AdventureId",
+                        name: "FK_AComments_Adventures_AdventureId",
                         column: x => x.AdventureId,
                         principalTable: "Adventures",
-                        principalColumn: "AdventureId");
+                        principalColumn: "AdventureId",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Comments_AspNetUsers_CommenterId",
+                        name: "FK_AComments_AspNetUsers_CommenterId",
+                        column: x => x.CommenterId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FComments",
+                columns: table => new
+                {
+                    FeatCommentId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CommentText = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CommentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CommenterId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    FeatId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FComments", x => x.FeatCommentId);
+                    table.ForeignKey(
+                        name: "FK_FComments_AspNetUsers_CommenterId",
                         column: x => x.CommenterId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Comments_Feats_FeatId",
+                        name: "FK_FComments_Feats_FeatId",
                         column: x => x.FeatId,
                         principalTable: "Feats",
-                        principalColumn: "FeatId");
+                        principalColumn: "FeatId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "IComments",
+                columns: table => new
+                {
+                    ItemCommentId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CommentText = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CommentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CommenterId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ItemId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IComments", x => x.ItemCommentId);
                     table.ForeignKey(
-                        name: "FK_Comments_Items_ItemId",
+                        name: "FK_IComments_AspNetUsers_CommenterId",
+                        column: x => x.CommenterId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_IComments_Items_ItemId",
                         column: x => x.ItemId,
                         principalTable: "Items",
-                        principalColumn: "ItemId");
+                        principalColumn: "ItemId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SComments",
+                columns: table => new
+                {
+                    SpellCommentId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CommentText = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CommentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CommenterId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    SpellId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SComments", x => x.SpellCommentId);
                     table.ForeignKey(
-                        name: "FK_Comments_Spells_SpellId",
+                        name: "FK_SComments_AspNetUsers_CommenterId",
+                        column: x => x.CommenterId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SComments_Spells_SpellId",
                         column: x => x.SpellId,
                         principalTable: "Spells",
-                        principalColumn: "SpellId");
+                        principalColumn: "SpellId",
+                        onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AComments_AdventureId",
+                table: "AComments",
+                column: "AdventureId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AComments_CommenterId",
+                table: "AComments",
+                column: "CommenterId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Adventures_UserId",
@@ -344,29 +421,14 @@ namespace IsaacLewisTermProject.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_AdventureId",
-                table: "Comments",
-                column: "AdventureId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Comments_CommenterId",
-                table: "Comments",
+                name: "IX_FComments_CommenterId",
+                table: "FComments",
                 column: "CommenterId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_FeatId",
-                table: "Comments",
+                name: "IX_FComments_FeatId",
+                table: "FComments",
                 column: "FeatId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Comments_ItemId",
-                table: "Comments",
-                column: "ItemId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Comments_SpellId",
-                table: "Comments",
-                column: "SpellId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Feats_UserId",
@@ -374,9 +436,29 @@ namespace IsaacLewisTermProject.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_IComments_CommenterId",
+                table: "IComments",
+                column: "CommenterId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_IComments_ItemId",
+                table: "IComments",
+                column: "ItemId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Items_UserId",
                 table: "Items",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SComments_CommenterId",
+                table: "SComments",
+                column: "CommenterId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SComments_SpellId",
+                table: "SComments",
+                column: "SpellId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Spells_UserId",
@@ -386,6 +468,9 @@ namespace IsaacLewisTermProject.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AComments");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -402,13 +487,19 @@ namespace IsaacLewisTermProject.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Comments");
+                name: "FComments");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoles");
+                name: "IComments");
+
+            migrationBuilder.DropTable(
+                name: "SComments");
 
             migrationBuilder.DropTable(
                 name: "Adventures");
+
+            migrationBuilder.DropTable(
+                name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "Feats");

@@ -1,0 +1,14 @@
+﻿@model Adventure
+
+<h1 class="display-4 d-flex justify-content-center mx-auto">Add an Adventure</h1>
+<div class="container d-flex justify-content-center">
+    <form method="post">
+
+        <div class="justify-content-center"><input asp-for="AdventureName" placeholder="Adventure Name" class="py-1" style="width: 300px"/><br /></div>
+        <input asp-for="AdventureDifficulty" placeholder="Adventure Rarity" class="py-1" style="width: 300px" /><br />
+        <input asp-for="RecommendedLevels" placeholder="Adventure Type" class="py-1" style="width: 300px" /><br />
+        <textarea asp-for="AdventureDescription" placeholder="Adventure Effect" class="py-1" style="width: 300px"></textarea><br />
+
+        <button type="submit" class="btn-primary">Submit</button>
+    </form>
+</div>

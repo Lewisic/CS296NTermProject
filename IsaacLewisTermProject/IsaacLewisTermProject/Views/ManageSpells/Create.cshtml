@@ -1,0 +1,83 @@
+﻿@model IsaacLewisTermProject.Models.Spell
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Spell</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SpellName" class="control-label"></label>
+                <input asp-for="SpellName" class="form-control" />
+                <span asp-validation-for="SpellName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpellSchool" class="control-label"></label>
+                <input asp-for="SpellSchool" class="form-control" />
+                <span asp-validation-for="SpellSchool" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpellLevel" class="control-label"></label>
+                <input asp-for="SpellLevel" class="form-control" />
+                <span asp-validation-for="SpellLevel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CastingTime" class="control-label"></label>
+                <input asp-for="CastingTime" class="form-control" />
+                <span asp-validation-for="CastingTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Range" class="control-label"></label>
+                <input asp-for="Range" class="form-control" />
+                <span asp-validation-for="Range" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Components" class="control-label"></label>
+                <input asp-for="Components" class="form-control" />
+                <span asp-validation-for="Components" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Duration" class="control-label"></label>
+                <input asp-for="Duration" class="form-control" />
+                <span asp-validation-for="Duration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Effects" class="control-label"></label>
+                <input asp-for="Effects" class="form-control" />
+                <span asp-validation-for="Effects" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EffectsAtHigherLevel" class="control-label"></label>
+                <input asp-for="EffectsAtHigherLevel" class="form-control" />
+                <span asp-validation-for="EffectsAtHigherLevel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpellLists" class="control-label"></label>
+                <input asp-for="SpellLists" class="form-control" />
+                <span asp-validation-for="SpellLists" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateAdded" class="control-label"></label>
+                <input asp-for="DateAdded" class="form-control" />
+                <span asp-validation-for="DateAdded" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

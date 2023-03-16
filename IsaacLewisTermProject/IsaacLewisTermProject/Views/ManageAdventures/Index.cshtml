@@ -1,0 +1,59 @@
+﻿@model IEnumerable<IsaacLewisTermProject.Models.Adventure>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Adventures</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AdventureName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdventureDifficulty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecommendedLevels)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdventureDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateAdded)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdventureName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdventureDifficulty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecommendedLevels)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdventureDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateAdded)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AdventureId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AdventureId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AdventureId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
