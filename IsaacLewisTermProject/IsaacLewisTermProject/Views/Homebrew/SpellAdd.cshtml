@@ -1,9 +1,14 @@
 ﻿@model Spell
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
 
 <h1 class="display-4 d-flex justify-content-center mx-auto">Add a Spell</h1>
 <div class="container d-flex justify-content-center">
     <form method="post">
-
+        <div asp-validation-summary="All"></div>
         <div class="justify-content-center"><input asp-for="SpellName" placeholder="Spell Name" class="py-1" style="width: 300px"/><br /></div>
         <input asp-for="SpellSchool" placeholder="Spell School" class="py-1" style="width: 300px" /><br />
         <input asp-for="SpellLevel" placeholder="Spell Level" class="py-1" style="width: 300px" /><br />

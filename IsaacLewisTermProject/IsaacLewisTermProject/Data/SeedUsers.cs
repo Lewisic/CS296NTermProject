@@ -12,7 +12,7 @@ namespace IsaacLewisTermProject.Data
             var userManager =
             provider.GetRequiredService<UserManager<AppUser>>();
             string username = "admin";
-            string password = "Secret!123";
+            string password = "Secret!1";
             string roleName = "Admin";
             // if role doesn't exist, create it
             if (await roleManager.FindByNameAsync(roleName) == null)

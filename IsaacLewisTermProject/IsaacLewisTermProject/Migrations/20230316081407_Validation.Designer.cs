@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IsaacLewisTermProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230316005421_Initial")]
-    partial class Initial
+    [Migration("20230316081407_Validation")]
+    partial class Validation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,7 +42,8 @@ namespace IsaacLewisTermProject.Migrations
 
                     b.Property<string>("AdventureName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
@@ -77,7 +78,8 @@ namespace IsaacLewisTermProject.Migrations
 
                     b.Property<string>("CommentText")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("CommenterId")
                         .IsRequired()
@@ -109,7 +111,8 @@ namespace IsaacLewisTermProject.Migrations
 
                     b.Property<string>("FeatName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -134,7 +137,8 @@ namespace IsaacLewisTermProject.Migrations
 
                     b.Property<string>("CommentText")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("CommenterId")
                         .IsRequired()
@@ -172,7 +176,8 @@ namespace IsaacLewisTermProject.Migrations
 
                     b.Property<string>("ItemName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("ItemRarity")
                         .IsRequired()
@@ -205,7 +210,8 @@ namespace IsaacLewisTermProject.Migrations
 
                     b.Property<string>("CommentText")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("CommenterId")
                         .IsRequired()
@@ -268,7 +274,8 @@ namespace IsaacLewisTermProject.Migrations
 
                     b.Property<string>("SpellName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("SpellSchool")
                         .IsRequired()
@@ -297,7 +304,8 @@ namespace IsaacLewisTermProject.Migrations
 
                     b.Property<string>("CommentText")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("CommenterId")
                         .IsRequired()

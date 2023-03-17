@@ -49,7 +49,7 @@ namespace IsaacLewisTermProject.Controllers
         [HttpPost]
         public async Task<IActionResult> ItemAdd(Item item)
         {
-            //if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 if (userManager != null)
                 {
@@ -124,7 +124,7 @@ namespace IsaacLewisTermProject.Controllers
         [HttpPost]
         public async Task<IActionResult> AdventureAdd(Adventure adventure)
         {
-            //if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 if (userManager != null)
                 {
@@ -199,7 +199,7 @@ namespace IsaacLewisTermProject.Controllers
         [HttpPost]
         public async Task<IActionResult> SpellAdd(Spell spell)
         {
-            //if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 if (userManager != null)
                 {
@@ -274,7 +274,7 @@ namespace IsaacLewisTermProject.Controllers
         [HttpPost]
         public async Task<IActionResult> FeatAdd(Feat feat)
         {
-            //if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 if (userManager != null)
                 {

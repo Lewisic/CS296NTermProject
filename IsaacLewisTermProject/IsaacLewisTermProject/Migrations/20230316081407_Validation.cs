@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace IsaacLewisTermProject.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Validation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -78,7 +78,7 @@ namespace IsaacLewisTermProject.Migrations
                 {
                     AdventureId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AdventureName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AdventureName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     AdventureDifficulty = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RecommendedLevels = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AdventureDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -186,7 +186,7 @@ namespace IsaacLewisTermProject.Migrations
                 {
                     FeatId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FeatName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FeatName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     FeatEffect = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
@@ -207,7 +207,7 @@ namespace IsaacLewisTermProject.Migrations
                 {
                     ItemId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ItemName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ItemName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     ItemRarity = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ItemType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ItemEffect = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -231,7 +231,7 @@ namespace IsaacLewisTermProject.Migrations
                 {
                     SpellId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SpellName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SpellName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     SpellSchool = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SpellLevel = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CastingTime = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -260,7 +260,7 @@ namespace IsaacLewisTermProject.Migrations
                 {
                     AdventureCommentId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CommentText = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CommentText = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     CommentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CommenterId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     AdventureId = table.Column<int>(type: "int", nullable: false)
@@ -288,7 +288,7 @@ namespace IsaacLewisTermProject.Migrations
                 {
                     FeatCommentId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CommentText = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CommentText = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     CommentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CommenterId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FeatId = table.Column<int>(type: "int", nullable: false)
@@ -316,7 +316,7 @@ namespace IsaacLewisTermProject.Migrations
                 {
                     ItemCommentId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CommentText = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CommentText = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     CommentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CommenterId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ItemId = table.Column<int>(type: "int", nullable: false)
@@ -344,7 +344,7 @@ namespace IsaacLewisTermProject.Migrations
                 {
                     SpellCommentId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CommentText = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CommentText = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     CommentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CommenterId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     SpellId = table.Column<int>(type: "int", nullable: false)

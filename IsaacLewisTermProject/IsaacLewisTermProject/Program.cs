@@ -43,7 +43,7 @@ using (var scope = app.Services.CreateScope())
 {
     await SeedUsers.CreateAdminUserAsync(scope.ServiceProvider);
     var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    //SeedData.Seed(context, scope.ServiceProvider);
+    SeedData.Seed(context, scope.ServiceProvider);
 }
 
 app.Run();

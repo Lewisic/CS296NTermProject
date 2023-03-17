@@ -1,9 +1,14 @@
 ﻿@model Item
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
 
 <h1 class="display-4 d-flex justify-content-center mx-auto jumbotron">Add an Item</h1>
 <div class="container d-flex justify-content-center">
     <form method="post">
-
+        <div asp-validation-summary="All"></div>
         <div class="justify-content-center"><input asp-for="ItemName" placeholder="Item Name" class="py-1" style="width: 300px"/><br /></div>
         <input asp-for="ItemRarity" placeholder="Item Rarity" class="py-1" style="width: 300px" /><br />
         <input asp-for="ItemType" placeholder="Item Type" class="py-1" style="width: 300px" /><br />
