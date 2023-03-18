@@ -10,25 +10,15 @@
     <form method="post">
         <div asp-validation-summary="All"></div>
         <div class="justify-content-center"><input asp-for="SpellName" placeholder="Spell Name" class="py-1" style="width: 300px"/><br /></div>
-        <span asp-validation-for="SpellName" class="text-danger"></span>
         <input asp-for="SpellSchool" placeholder="Spell School" class="py-1" style="width: 300px" /><br />
-        <span asp-validation-for="SpellSchool" class="text-danger"></span>
         <input asp-for="SpellLevel" placeholder="Spell Level" class="py-1" style="width: 300px" /><br />
-        <span asp-validation-for="SpellLevel" class="text-danger"></span>
         <input asp-for="CastingTime" placeholder="Casting Time" class="py-1" style="width: 300px" /><br />
-        <span asp-validation-for="CastingTime" class="text-danger"></span>
         <input asp-for="Range" placeholder="Range" class="py-1" style="width: 300px" /><br />
-        <span asp-validation-for="Range" class="text-danger"></span>
         <input asp-for="Components" placeholder="Components" class="py-1" style="width: 300px" /><br />
-        <span asp-validation-for="Comments" class="text-danger"></span>
         <input asp-for="Duration" placeholder="Duration" class="py-1" style="width: 300px" /><br />
-        <span asp-validation-for="Duration" class="text-danger"></span>
         <textarea asp-for="Effects" placeholder="Effects" class="py-1" style="width: 300px"></textarea><br />
-        <span asp-validation-for="Effects" class="text-danger"></span>
         <textarea asp-for="EffectsAtHigherLevel" placeholder="Effects at Higher Level" class="py-1" style="width: 300px"></textarea><br />
-        <span asp-validation-for="EffectsAtHigherLevel" class="text-danger"></span>
         <input asp-for="SpellLists" placeholder="Spell Lists" class="py-1" style="width: 300px" /><br />
-        <span asp-validation-for="SpellLists" class="text-danger"></span>
         <button type="submit" class="btn-primary">Submit</button>
     </form>
 </div>
