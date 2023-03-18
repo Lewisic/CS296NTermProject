@@ -8,14 +8,14 @@ namespace IsaacLewisTermProject.Models
         private List<ItemComment> comments = new();
 
         public int ItemId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter a item name")]
         [StringLength(255)]
         public string ItemName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter the item rarity")]
         public string ItemRarity { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter the item type")]
         public string ItemType { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter the item effect")]
         public string ItemEffect { get; set; }
         public bool Attunement { get; set; }
         [DisplayFormat(DataFormatString = "{0:MM/d/yyyy}", ApplyFormatInEditMode = true)]

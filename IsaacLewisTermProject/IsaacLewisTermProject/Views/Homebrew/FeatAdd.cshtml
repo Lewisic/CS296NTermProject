@@ -10,8 +10,9 @@
     <form method="post">
         <div asp-validation-summary="All"></div>
         <div class="justify-content-center"><input asp-for="FeatName" placeholder="Feat Name" class="py-1" style="width: 300px"/><br /></div>
+        <span asp-validation-for="FeatName" class="text-danger"></span>
         <textarea asp-for="FeatEffect" placeholder="Adventure Effect" class="py-1" style="width: 300px"></textarea><br />
-
+        <span asp-validation-for="FeatEffect" class="text-danger"></span>
         <button type="submit" class="btn-primary">Submit</button>
     </form>
 </div>

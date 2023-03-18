@@ -5,7 +5,7 @@ namespace IsaacLewisTermProject.Models
     public class FeatComment
     {
         public int FeatCommentId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter a comment")]
         [StringLength(255, MinimumLength = 3)]
         public string CommentText { get; set; }
         [DisplayFormat(DataFormatString = "{0:MM/d/yyyy}", ApplyFormatInEditMode = true)]

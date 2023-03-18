@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace IsaacLewisTermProject.Migrations
 {
-    public partial class Validation : Migration
+    public partial class MoreValidation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

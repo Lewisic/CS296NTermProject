@@ -42,6 +42,7 @@ namespace IsaacLewisTermProject.Controllers
             AppUser user = await userManager.FindByIdAsync(id);
             if (user != null)
             {
+                
                 IdentityResult result = await userManager.DeleteAsync(user);
                 if (!result.Succeeded)
                 { // if failed

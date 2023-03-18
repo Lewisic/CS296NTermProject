@@ -9,10 +9,10 @@ namespace IsaacLewisTermProject.Models
         private List<FeatComment> comments = new();
 
         public int FeatId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter a feat name")]
         [StringLength(255)]
         public string FeatName { get; set;}
-        [Required]
+        [Required(ErrorMessage = "Please enter the feats effects")]
         public string FeatEffect { get; set;}
         [DisplayFormat(DataFormatString = "{0:MM/d/yyyy}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]

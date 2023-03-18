@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IsaacLewisTermProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230316081407_Validation")]
-    partial class Validation
+    [Migration("20230318031019_MoreValidation")]
+    partial class MoreValidation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

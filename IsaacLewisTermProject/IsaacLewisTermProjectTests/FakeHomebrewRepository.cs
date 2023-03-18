@@ -21,7 +21,7 @@ namespace IsaacLewisTermProjectTests
         {
             get
             {
-                return new InMemoryAsyncQueryable<Item>(Items);
+                return new InMemoryAsyncQueryable<Item>(items);
             }
         }
 
@@ -29,7 +29,7 @@ namespace IsaacLewisTermProjectTests
         {
             get
             {
-                return new InMemoryAsyncQueryable<Adventure>(Adventures);
+                return new InMemoryAsyncQueryable<Adventure>(adventures);
             }
         }
 
@@ -37,7 +37,7 @@ namespace IsaacLewisTermProjectTests
         {
             get
             {
-                return new InMemoryAsyncQueryable<Spell>(Spells);
+                return new InMemoryAsyncQueryable<Spell>(spells);
             }
         }
 
@@ -45,7 +45,7 @@ namespace IsaacLewisTermProjectTests
         {
             get
             {
-                return new InMemoryAsyncQueryable<Feat>(Feats);
+                return new InMemoryAsyncQueryable<Feat>(feats);
             }
         }
 

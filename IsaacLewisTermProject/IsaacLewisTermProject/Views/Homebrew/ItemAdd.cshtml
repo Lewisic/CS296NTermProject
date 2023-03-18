@@ -10,9 +10,13 @@
     <form method="post">
         <div asp-validation-summary="All"></div>
         <div class="justify-content-center"><input asp-for="ItemName" placeholder="Item Name" class="py-1" style="width: 300px"/><br /></div>
+        <span asp-validation-for="ItemName" class="text-danger"></span>
         <input asp-for="ItemRarity" placeholder="Item Rarity" class="py-1" style="width: 300px" /><br />
+        <span asp-validation-for="ItemRarity" class="text-danger"></span>
         <input asp-for="ItemType" placeholder="Item Type" class="py-1" style="width: 300px" /><br />
+        <span asp-validation-for="ItemType" class="text-danger"></span>
         <textarea asp-for="ItemEffect" placeholder="Item Effect" class="py-1" style="width: 300px"></textarea><br />
+        <span asp-validation-for="ItemEffect" class="text-danger"></span>
         <label asp-for="Attunement" class="control-label">Attunement: </label>
         <input asp-for="Attunement" placeholder="Item Attunement" class="py-1"><br />
 

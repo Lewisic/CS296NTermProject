@@ -12,10 +12,13 @@
         <div asp-validation-summary="All"></div>
 
         <div class="justify-content-center"><input asp-for="AdventureName" placeholder="Adventure Name" class="py-1" style="width: 300px"/><br /></div>
+        <span asp-validation-for="AdventureName" class="text-danger"></span>
         <input asp-for="AdventureDifficulty" placeholder="Adventure Rarity" class="py-1" style="width: 300px" /><br />
+        <span asp-validation-for="AdventureDifficulty" class="text-danger"></span>
         <input asp-for="RecommendedLevels" placeholder="Adventure Type" class="py-1" style="width: 300px" /><br />
+        <span asp-validation-for="RecommendedLevels" class="text-danger"></span>
         <textarea asp-for="AdventureDescription" placeholder="Adventure Effect" class="py-1" style="width: 300px"></textarea><br />
-
+        <span asp-validation-for="AdventureDescription" class="text-danger"></span>
         <button type="submit" class="btn-primary">Submit</button>
     </form>
 </div>
