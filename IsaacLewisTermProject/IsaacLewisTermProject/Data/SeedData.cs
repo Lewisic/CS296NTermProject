@@ -9,16 +9,18 @@ namespace IsaacLewisTermProject.Data
         {
             var userManager = provider.GetRequiredService<UserManager<AppUser>>();
             const string PASSWORD = "Secret!1";
-            AppUser isaac = new AppUser { UserName = "IsaacLewis" };
-            isaac.Name = isaac.UserName;
-            var result = userManager.CreateAsync(isaac, PASSWORD);
-            AppUser jack = new AppUser { UserName = "Jack" };
-            jack.Name = jack.UserName;
-            result = userManager.CreateAsync(jack, PASSWORD);
-            context.SaveChanges();
+
 
             if (!context.Items.Any())
             {
+                AppUser isaac = new AppUser { UserName = "IsaacLewis" };
+                isaac.Name = isaac.UserName;
+                var result = userManager.CreateAsync(isaac, PASSWORD);
+                AppUser jack = new AppUser { UserName = "Jack" };
+                jack.Name = jack.UserName;
+                result = userManager.CreateAsync(jack, PASSWORD);
+                context.SaveChanges();
+
                 Item item = new Item
                 {
                     ItemName = "Ring of Invisibility",
@@ -51,6 +53,11 @@ namespace IsaacLewisTermProject.Data
 
             if (!context.Adventures.Any())
             {
+                AppUser john = new AppUser { UserName = "John" };
+                john.Name = john.UserName;
+                var result = userManager.CreateAsync(john, PASSWORD);
+                context.SaveChanges();
+
                 Adventure adventure = new Adventure
                 {
                     AdventureName = "Journey to Dun Morough",
@@ -58,7 +65,7 @@ namespace IsaacLewisTermProject.Data
                     RecommendedLevels = "1-3",
                     AdventureDescription = "You are a group of young dwarven adventurers going on a journey.",
                     DateAdded = DateTime.Now,
-                    User = jack
+                    User = john
                 };
                 context.Adventures.Add(adventure);
                 context.SaveChanges();
@@ -66,6 +73,11 @@ namespace IsaacLewisTermProject.Data
 
             if (!context.Spells.Any())
             {
+                AppUser jake = new AppUser { UserName = "Jake" };
+                jake.Name = jake.UserName;
+                var result = userManager.CreateAsync(jake, PASSWORD);
+                context.SaveChanges();
+
                 Spell spell = new Spell
                 {
                     SpellName = "Dragon Breath",
@@ -78,7 +90,7 @@ namespace IsaacLewisTermProject.Data
                     Effects = "Deal 4d6 fire damage in a 20 ft cone.",
                     EffectsAtHigherLevel = "Add 2d6 fire damage for every level past second.",
                     SpellLists = "Wizard, Sorcerer",
-                    User = isaac,
+                    User = jake,
                     DateAdded = DateTime.Now,
                 };
                 context.Spells.Add(spell);
@@ -87,11 +99,16 @@ namespace IsaacLewisTermProject.Data
 
             if (!context.Feats.Any())
             {
+                AppUser peyton = new AppUser { UserName = "Peyton" };
+                peyton.Name = peyton.UserName;
+                var result = userManager.CreateAsync(peyton, PASSWORD);
+                context.SaveChanges();
+
                 Feat feat = new Feat
                 {
                     FeatName = "Fire Master.",
                     FeatEffect = "Add 2d6 damage to any fire spell you cast.",
-                    User = isaac,
+                    User = peyton,
                     DateAdded = DateTime.Now,
                 };
                 context.Feats.Add(feat);
